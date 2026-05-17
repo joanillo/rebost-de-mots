@@ -1,0 +1,9 @@
+[MESSAGES CONTROL]
+disable=C0301, W0312, W0401, C0103, W0614, C0330
+# C0301 # line too long
+# W0312 # Found indentation with tabs instead of spaces (mixed-indentation)
+# W0401: Wildcard import modules.ex1 (wildcard-import)
+# C0103: Constant name "parser" doesn't conform to UPPER_CASE naming style (invalid-name)
+# W0614: Unused import pd from wildcard import (unused-wildcard-import)
+# C0330: Wrong hanging indentation (remove 12 spaces)
+
