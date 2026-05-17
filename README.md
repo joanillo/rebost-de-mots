@@ -5,7 +5,7 @@ abeurador, abraonar, aclaparar, aclucar, adient, adobar, adreçar-se, àdhuc, af
 
 Aquest projecte genera relats literaris curts on introduïm diferent vocabulari que volem treballar. Després del relat s'explica el significat del vocabulari i el seu context dins de la narració.
 
-Els relats estan generats amb LLM. Es poden testejar diferents LLM. És necessari tenir l'API Key dels LLM que vol provar.
+Els relats estan generats amb LLM. Es poden testejar diferents LLM. És necessari tenir l'API Key dels LLM que es vol provar.
 
 ## Getting Started
 
@@ -41,6 +41,13 @@ Aquest projecte utilitza **pandoc** per convertir els fitxers markdown a pdf. No
 ```bash
 sudo apt install pandoc
 ```
+
+Per testejar que pandoc funciona:
+
+```bash
+$ pandoc document.md -o document.pdf
+```
+
 
 5. Configuració de les API KEYs. Les API KEYs han d'estar en el fitxer ocult *.env*:
 
