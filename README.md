@@ -3,6 +3,10 @@
 Improve your Catalan vocabulary with words worth preserving - Millora el teu vocabulari de català amb mots que no s'han de perdre. Per ex: abassegar
 abeurador, abraonar, aclaparar, aclucar, adient, adobar, adreçar-se, àdhuc, afanyar-se, agenollar-se, agosarat, ajornar, ajupir-se,...
 
+Aquest projecte genera relats literaris curts on introduïm diferent vocabulari que volem treballar. Després del relat s'explica el significat del vocabulari i el seu context dins de la narració.
+
+Els relats estan generats amb LLM. Es poden testejar diferents LLM. És necessari tenir l'API Key dels LLM que vol provar.
+
 ## Getting Started
 
 Per començar amb el projecte, segueix els següents passsos:
@@ -22,7 +26,7 @@ cd rebost-de-mots
 3. Creació d'un entorn virtual per executar el projecte (recomanable):
 
 ```bash
-python3 -m venv venv
+python -m venv venv
 source venv/bin/activate
 ```
 
@@ -38,7 +42,7 @@ Aquest projecte utilitza **pandoc** per convertir els fitxers markdown a pdf. No
 sudo apt install pandoc
 ```
 
-5. Configuració de les API KEYs. Les API KEYs han d'estar en el fitxer .env:
+5. Configuració de les API KEYs. Les API KEYs han d'estar en el fitxer ocult *.env*:
 
 ```bash
 OPENAI_API_KEY=sk-proj-...
@@ -50,21 +54,21 @@ XAI_API_KEY=xai-...
 6. Executa el projecte:
 
 ```bash
-$ python3 main.py --help
+$ python main.py --help
 ```
 
 **Mode anàlisi:**
 Analitza la producció de narracions de diferents APIs de LLM.
 
 ```
-$ python3 main.py --mode=analisi
+$ python main.py --mode=analisi
 ```
 
 **Mode Producció:**
 Genera narracions amb la API escollida.
 
 ```
-$ python3 main.py --mode=produccio --api=anthropic --num=20
+$ python main.py --mode=produccio --api=anthropic --num=20
 ```
 
 ## Estructura del Projecte
@@ -106,7 +110,7 @@ Aquests són els models testejats, som conscients de què hi ha models millors a
 
 Com a mostra de què aconseguim, pots llegir els 20 relats que s'han generat en el document:
 
-- ```[src/output/relats_anthropic_260517_113608.pdf](src/output/relats_anthropic_260517_113608.pdf)```
+- [src/output/relats_anthropic_260517_113608.pdf](src/output/relats_anthropic_260517_113608.pdf)
 
 ## License
 
