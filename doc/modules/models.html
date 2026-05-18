@@ -77,8 +77,10 @@
 </span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>		<span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;grok-4.3&quot;</span>
 </span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>	<span class="k">elif</span> <span class="n">api</span> <span class="o">==</span> <span class="s2">&quot;deepseek&quot;</span><span class="p">:</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>		<span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;deepseek-reasoner&quot;</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>	<span class="k">return</span> <span class="n">model</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>	<span class="k">elif</span> <span class="n">api</span> <span class="o">==</span> <span class="s2">&quot;gemini&quot;</span><span class="p">:</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>		<span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;gemini-2.5-flash&quot;</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>	<span class="k">return</span> <span class="n">model</span>
 </span></pre></div>
 
 
@@ -114,8 +116,10 @@
 </span><span id="get_models-20"><a href="#get_models-20"><span class="linenos">20</span></a>		<span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;grok-4.3&quot;</span>
 </span><span id="get_models-21"><a href="#get_models-21"><span class="linenos">21</span></a>	<span class="k">elif</span> <span class="n">api</span> <span class="o">==</span> <span class="s2">&quot;deepseek&quot;</span><span class="p">:</span>
 </span><span id="get_models-22"><a href="#get_models-22"><span class="linenos">22</span></a>		<span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;deepseek-reasoner&quot;</span>
-</span><span id="get_models-23"><a href="#get_models-23"><span class="linenos">23</span></a>
-</span><span id="get_models-24"><a href="#get_models-24"><span class="linenos">24</span></a>	<span class="k">return</span> <span class="n">model</span>
+</span><span id="get_models-23"><a href="#get_models-23"><span class="linenos">23</span></a>	<span class="k">elif</span> <span class="n">api</span> <span class="o">==</span> <span class="s2">&quot;gemini&quot;</span><span class="p">:</span>
+</span><span id="get_models-24"><a href="#get_models-24"><span class="linenos">24</span></a>		<span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;gemini-2.5-flash&quot;</span>
+</span><span id="get_models-25"><a href="#get_models-25"><span class="linenos">25</span></a>
+</span><span id="get_models-26"><a href="#get_models-26"><span class="linenos">26</span></a>	<span class="k">return</span> <span class="n">model</span>
 </span></pre></div>
 
 

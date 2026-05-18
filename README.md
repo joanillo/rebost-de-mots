@@ -40,6 +40,8 @@ Aquest projecte utilitza **pandoc** per convertir els fitxers markdown a pdf. No
 
 ```bash
 sudo apt install pandoc
+sudo apt install texlive-latex-base
+sudo apt install texlive-latex-recommended texlive-fonts-recommended
 ```
 
 Per testejar que pandoc funciona:
@@ -56,6 +58,7 @@ OPENAI_API_KEY=sk-proj-...
 ANTHROPIC_API_KEY=sk-ant-...
 DEEPSEEK_API_KEY=sk-...
 XAI_API_KEY=xai-...
+GEMINI_API_KEY=...
 ```
 
 6. Executa el projecte:
@@ -101,14 +104,27 @@ El repositori té la següent estructura:
 
 ## Scores
 
-S'ha testejat les API de OpenAI (gpt-4o, gpt-4o-mini), Anthropic (claude-opus-4-7), XAI (Grok-4.3) i DeepSeek (deepseek-reasoner), obtenint els següents resultats:
+S'ha testejat les API de OpenAI (gpt-4o, gpt-4o-mini), Anthropic (claude-opus-4-7), XAI (Grok-4.3) i DeepSeek (deepseek-reasoner), Gemini (gemini-2.5-flash) obtenint els següents resultats:
 
 ```
+score gemini:               9,90
 score antropic:             9,60
 score deepseek:             8,80
 score openai (gpt-4o):      8,65
 score xai:                  8,35
 score openai (gpt-4o-mini): 6,85
+```
+
+Els score s'han calculat amb els següents pesos, i fent el promig sobre dos textos:
+
+```
+qualitat literària:           20%
+totes les paraules?:          10%
+correcció ortogràfica:        10%
+correcció gramatical:         20%
+definició de les paraules:    20%
+context dins de la narració:  10%
+format de sortida:            10%
 ```
 
 Aquests són els models testejats, som conscients de què hi ha models millors a maig de 2026. Però els resultats que hem aconseguit són satisfactoris.
@@ -117,7 +133,7 @@ Aquests són els models testejats, som conscients de què hi ha models millors a
 
 Com a mostra de què aconseguim, pots llegir els 20 relats que s'han generat en el document:
 
-- [src/output/relats_anthropic_260517_113608.pdf](src/output/relats_anthropic_260517_113608.pdf)
+- [src/output/relats_gemini_260518_010551.pdf](src/output/relats_gemini_260518_010551.pdf)
 
 ## License
 

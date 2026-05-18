@@ -30,7 +30,7 @@ if __name__ == "__main__":
 	parser.add_argument(
 		"--api",
 		type=str,
-		choices=["openai", "anthropic", "xai", "deepseek", "test"],
+		choices=["openai", "anthropic", "xai", "deepseek", "gemini", "test"],
 		help=(
 				"IA API\n"
 				"Només vàlid per mode = produccio"

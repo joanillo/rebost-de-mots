@@ -19,5 +19,7 @@ def get_models(api: str) -> str:
 		model = "grok-4.3"
 	elif api == "deepseek":
 		model = "deepseek-reasoner"
+	elif api == "gemini":
+		model = "gemini-2.5-flash"
 
 	return model

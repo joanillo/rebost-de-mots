@@ -2,8 +2,6 @@
 import os
 import subprocess
 
-from openai import OpenAI
-from anthropic import Anthropic
 from dotenv import load_dotenv
 
 from modules.prompt import get_prompt_fixed
@@ -24,10 +22,9 @@ def analize_apis() -> None:
 
 	prompt = get_prompt_fixed()
 
-	# modelAI = "openai" # openai, anthropic, xai, deepseek, test
+	# modelAI = "openai" # openai, anthropic, xai, deepseek, gemini, test
 	# modelsAI = ["test"]
-	# modelsAI = ["openai", "anthropic", "xai", "deepseek"]
-	modelsAI = ["openai"]
+	modelsAI = ["openai", "anthropic", "xai", "deepseek", "gemini"]
 
 	for modelAI in modelsAI:
 		print()
@@ -41,6 +38,13 @@ def analize_apis() -> None:
 				api_key = os.getenv("OPENAI_API_KEY")
 				if not api_key:
 					raise ValueError(f"Falta la variable d'entorn de {modelAI}")
+				try:
+					from openai import OpenAI
+				except ImportError:
+					raise ImportError(
+						"Falta el paquet OpenAI"
+					)
+
 				client = OpenAI(api_key=api_key)
 				response = client.chat.completions.create(
 						model=get_models(modelAI), # gpt-4o, gpt-4o-mini
@@ -60,6 +64,13 @@ def analize_apis() -> None:
 				api_key = os.getenv("ANTHROPIC_API_KEY")
 				if not api_key:
 					raise ValueError(f"Falta la variable d'entorn de {modelAI}")
+				try:
+					from anthropic import Anthropic
+				except ImportError:
+					raise ImportError(
+						"Falta el paquet Anthropic"
+					)
+
 				client = Anthropic(api_key=api_key)
 				response = client.messages.create(
 						model=get_models(modelAI), # claude-opus-4-7
@@ -81,6 +92,12 @@ def analize_apis() -> None:
 				api_key = os.getenv("XAI_API_KEY")
 				if not api_key:
 					raise ValueError(f"Falta la variable d'entorn de {modelAI}")
+				try:
+					from openai import OpenAI
+				except ImportError:
+					raise ImportError(
+						"Falta el paquet OpenAI"
+					)
 				client = OpenAI(
 						api_key=api_key,
 						base_url="https://api.x.ai/v1"
@@ -108,6 +125,12 @@ def analize_apis() -> None:
 				api_key = os.getenv("DEEPSEEK_API_KEY")
 				if not api_key:
 					raise ValueError(f"Falta la variable d'entorn de {modelAI}")
+				try:
+					from openai import OpenAI
+				except ImportError:
+					raise ImportError(
+						"Falta el paquet OpenAI"
+					)
 
 				client = OpenAI(
 						api_key=api_key,
@@ -125,6 +148,31 @@ def analize_apis() -> None:
 				)
 
 				content = response.choices[0].message.content
+
+			except Exception as e:
+				print(f"Error inesperat: {e}")
+				content = None
+
+		elif modelAI == "gemini":
+			# Gemini
+			try:
+				api_key = os.getenv("GEMINI_API_KEY")
+				if not api_key:
+					raise ValueError(f"Falta la variable d'entorn de {modelAI}")
+				try:
+					from google import genai
+				except ImportError:
+					raise ImportError(
+						"Falta el paquet genai de Google Gemini"
+					)
+
+				client = genai.Client(api_key=api_key)
+
+				response = client.models.generate_content(
+					model=get_models(modelAI),
+					contents=prompt
+				)
+				content = response.text
 
 			except Exception as e:
 				print(f"Error inesperat: {e}")

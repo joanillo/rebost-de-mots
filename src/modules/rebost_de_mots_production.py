@@ -4,8 +4,6 @@ import subprocess
 import random
 from datetime import datetime
 
-from openai import OpenAI
-from anthropic import Anthropic
 from dotenv import load_dotenv
 
 from modules.vocabulary import get_vocabulary
@@ -41,6 +39,13 @@ def rebost_de_mots_production(modelAI: str, num: int) -> None:
 				api_key = os.getenv("OPENAI_API_KEY")
 				if not api_key:
 					raise ValueError(f"Falta la variable d'entorn de {modelAI}")
+				try:
+					from openai import OpenAI
+				except ImportError:
+					raise ImportError(
+						"Falta el paquet OpenAI"
+					)
+
 				client = OpenAI(api_key=api_key)
 				response = client.chat.completions.create(
 						model=get_models(modelAI), # gpt-4o, gpt-4o-mini
@@ -60,6 +65,13 @@ def rebost_de_mots_production(modelAI: str, num: int) -> None:
 				api_key = os.getenv("ANTHROPIC_API_KEY")
 				if not api_key:
 					raise ValueError(f"Falta la variable d'entorn de {modelAI}")
+				try:
+					from anthropic import Anthropic
+				except ImportError:
+					raise ImportError(
+						"Falta el paquet Anthropic"
+					)
+
 				client = Anthropic(api_key=api_key)
 				response = client.messages.create(
 						model=get_models(modelAI), # claude-opus-4-7
@@ -81,6 +93,13 @@ def rebost_de_mots_production(modelAI: str, num: int) -> None:
 				api_key = os.getenv("XAI_API_KEY")
 				if not api_key:
 					raise ValueError(f"Falta la variable d'entorn de {modelAI}")
+				try:
+					from openai import OpenAI
+				except ImportError:
+					raise ImportError(
+						"Falta el paquet OpenAI"
+					)
+
 				client = OpenAI(
 						api_key=api_key,
 						base_url="https://api.x.ai/v1"
@@ -108,6 +127,12 @@ def rebost_de_mots_production(modelAI: str, num: int) -> None:
 				api_key = os.getenv("DEEPSEEK_API_KEY")
 				if not api_key:
 					raise ValueError(f"Falta la variable d'entorn de {modelAI}")
+				try:
+					from openai import OpenAI
+				except ImportError:
+					raise ImportError(
+						"Falta el paquet OpenAI"
+					)
 
 				client = OpenAI(
 						api_key=api_key,
@@ -130,6 +155,31 @@ def rebost_de_mots_production(modelAI: str, num: int) -> None:
 				print(f"Error inesperat: {e}")
 				content = None
 
+		elif modelAI == "gemini":
+			# Gemini
+			try:
+				api_key = os.getenv("GEMINI_API_KEY")
+				if not api_key:
+					raise ValueError(f"Falta la variable d'entorn de {modelAI}")
+				try:
+					from google import genai
+				except ImportError:
+					raise ImportError(
+						"Falta el paquet genai de Google Gemini"
+					)
+
+				client = genai.Client(api_key=api_key)
+
+				response = client.models.generate_content(
+					model=get_models(modelAI),
+					contents=prompt
+				)
+				content = response.text
+
+			except Exception as e:
+				print(f"Error inesperat: {e}")
+				content = None
+				
 		# ------------------
 
 		if content:
